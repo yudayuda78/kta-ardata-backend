@@ -13,6 +13,7 @@ class Berita extends Model
         'penulis',
         'tanggal',
         'artikel',
+        'image',
     ];
 
     protected $casts = [

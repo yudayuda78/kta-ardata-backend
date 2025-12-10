@@ -31,6 +31,7 @@ class BeritaService
             'judul'   => $data['judul'],
             'penulis' => $data['penulis'],
             'tanggal' => $data['tanggal'],
+            'image'   => $data['image'] ?? null,
             'artikel' => $data['artikel'],
         ]);
     }
