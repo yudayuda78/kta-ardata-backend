@@ -99,12 +99,12 @@ class IuranDonasiController extends Controller
     public function show($id)
     {
          /** @var \App\Models\User|null $user */
-    $user = auth()->user();
+    // $user = auth()->user();
 
-    $userId = $user?->id;
+    // $userId = $user?->id;
 
 
-        $iuranDonasi = $this->service->getById( $userId);
+        $iuranDonasi = $this->service->getById( $id);
 
         if (!$iuranDonasi) {
             return response()->json([

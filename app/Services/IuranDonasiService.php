@@ -58,9 +58,9 @@ class IuranDonasiService
         return $iuran->delete();
     }
 
-    public function getById( int $userId, ?int $year = null)
+    public function getById( int $id, ?int $year = null)
     {
-    $query = IuranDonasi::where('user_id', $userId);
+    $query = IuranDonasi::where('id', $id);
 
     // Filter berdasarkan tahun jika diberikan
     if ($year) {
