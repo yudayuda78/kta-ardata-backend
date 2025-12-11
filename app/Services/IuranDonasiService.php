@@ -84,4 +84,30 @@ class IuranDonasiService
     ];
     }
 
+    public function getByUserId( int $id, ?int $year = null)
+    {
+    $query = IuranDonasi::where('user_id', $id);
+
+    // Filter berdasarkan tahun jika diberikan
+    if ($year) {
+        $query->whereYear('created_at', $year);
+    }
+
+    $iuranDonasi = $query->get();
+
+    // Tambahkan field periode (tahun) ke setiap item
+    $iuranDonasi->transform(function ($item) {
+        $item->periode = $item->created_at->format('Y'); // ambil tahun
+        return $item;
+    });
+
+    // Hitung total jumlah
+    $totalAmount = $iuranDonasi->sum('jumlah');
+
+    return [
+        'data' => $iuranDonasi,
+        'total_amount' => $totalAmount
+    ];
+    }
+
 }

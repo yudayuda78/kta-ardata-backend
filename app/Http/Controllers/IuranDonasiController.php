@@ -119,5 +119,28 @@ class IuranDonasiController extends Controller
                 // 'user' => $iuranDonasi,
         ]);
     }
+    public function showByUser($id)
+    {
+         /** @var \App\Models\User|null $user */
+    // $user = auth()->user();
+
+    // $userId = $user?->id;
+
+
+        $iuranDonasi = $this->service->getByUserId( $id);
+
+        if (!$iuranDonasi) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak ditemukan atau bukan milik Anda'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,  
+            'data' => $iuranDonasi
+                // 'user' => $iuranDonasi,
+        ]);
+    }
 
 }

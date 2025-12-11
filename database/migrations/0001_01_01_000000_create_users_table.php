@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('role', ['anggota', 'umum', 'admin'])->default('umum');
 
             $table->dateTime('last_pay')->nullable();
+            $table->integer('point')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
